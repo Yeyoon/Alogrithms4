@@ -118,6 +118,7 @@ public:
 
 	friend ostream & operator<<(ostream &os, const SequentialSearchST<Key,Value> &st)
 	{
+
 		for (Node *x = st.first; x != NULL; x = x->next)
 		{
 			os << x->key << ":" << x->val << endl;
@@ -192,5 +193,7 @@ public:
 
 };
 
-#endif
+#endif
+
+
 

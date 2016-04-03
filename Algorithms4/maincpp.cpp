@@ -1,27 +1,36 @@
 #include "SequentialSearchST.h"
+#include "BinarySearchST.h"
+#include "bst.h"
 
 #include <iostream>
 #include <string>
 
+
 using namespace std;
 
-void test_one(SequentialSearchST<char, int> &st)
+template <class Key, class Value>
+void test_one(ST<Key, Value> &st)
 {
 	string str("SEARCHEXAMPLE");
 	for (int i = 0; i < str.length(); i++)
 	{
 		st.put(str[i], i);
+
 	}
 }
 
-void test_iter(SequentialSearchST<char, int> &st)
-{
-	SequentialSearchST<char, int>::iterator it = st.begin();
-	for (; it != st.end(); it++)
-	{
-		cout << *it << endl;
-	}
-}
+//template <class Key, class Value>
+//void test_iter(ST<Key, Value> &st)
+//{
+//	SequentialSearchST<Key, Value> sst = (SequentialSearchST<Key, Value>)st;
+//	SequentialSearchST<Key, Value>::iterator it = sst.begin();
+//	for (; it != sst.end(); it++)
+//	{
+//		cout << *it << endl;
+//	}
+//}
+
+
 
 int main()
 {
@@ -29,7 +38,14 @@ int main()
 	test_one(sqst);
 	cout << sqst << endl;
 
-	cout << "TEST ITERATOR" << endl;
-	test_iter(sqst);
+
+
+	BinarySearchST<char, int> bst;
+	test_one(bst);
+	cout << bst << endl;
+
+	BST<char, int> b;
+	test_one(b);
+	cout << b << endl;
 	return 0;
 }
