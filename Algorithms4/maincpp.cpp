@@ -1,6 +1,7 @@
 #include "SequentialSearchST.h"
 #include "BinarySearchST.h"
 #include "bst.h"
+#include "rbt.h"
 
 #include <iostream>
 #include <string>
@@ -30,10 +31,32 @@ void test_one(ST<Key, Value> &st)
 //	}
 //}
 
+template <class Key, class Value>
+void test_two(ST<Key, Value> &st)
+{
+	int keys[] = { 12,1,9,2,0,11,7,19,4,15,18,5,14,13,10,16,6,3,8,17 };
+	for (int i = 0; i < sizeof(keys) / sizeof(keys[0]); i++)
+	{
+		st.put(keys[i], keys[i]);
+	}
+}
 
+template <class Key, class Value>
+void test_del(RBT<Key, Value> &st)
+{
+	int keys[] = { 12,1,9,2,0,11,7,19,4,15,18,5,14,13,10,16,6,3,8,17 };
+	for (int i = 0; i < sizeof(keys) / sizeof(keys[0]); i++)
+	{
+		cout << "del " << keys[i] << ":" << endl;
+		st.del(keys[i]);
+		st.p();
+		cout << "del " << keys[i] << " end" << endl;
+	}
+}
 
 int main()
 {
+	/*
 	SequentialSearchST<char, int> sqst;
 	test_one(sqst);
 	cout << sqst << endl;
@@ -47,5 +70,13 @@ int main()
 	BST<char, int> b;
 	test_one(b);
 	cout << b << endl;
+	*/
+
+	RBT<int, int> r;
+	test_two(r);
+	r.p();
+	cout << endl;
+
+	test_del(r);
 	return 0;
 }
